@@ -2,6 +2,7 @@
 {
     public enum SfxEventType
     {
+        INVALID,
         SOUND,
         SURFACE
     }
