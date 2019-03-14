@@ -1,10 +1,27 @@
-﻿using pg.animationsfxmap.data.basetypes;
+﻿using System;
+using System.Security.Cryptography;
+using pg.animationsfxmap.data.basetypes;
 using pg.animationsfxmap.enums;
 
 namespace pg.animationsfxmap.data.impl
 {
-    public class SurfaceEvent : ASfxEvent
+    public class SurfaceEvent : ASfxEvent, IEquatable<SurfaceEvent>
     {
+        private SurfaceFxTriggerType _surfaceFxTrigger;
+        private string _attachmentBoneName;
+
+        public SurfaceFxTriggerType SurfaceFxTrigger
+        {
+            get => _surfaceFxTrigger;
+            set => _surfaceFxTrigger = value;
+        }
+
+        public string AttachmentBoneName
+        {
+            get => _attachmentBoneName;
+            set => _attachmentBoneName = value;
+        }
+
         public SurfaceEvent(string animationKey, uint frameTick, SurfaceFxTriggerType surfaceFxTrigger, string attachmentBoneName) : base(SfxEventType.SURFACE)
         {
             AnimationKey = animationKey;
@@ -15,12 +32,40 @@ namespace pg.animationsfxmap.data.impl
 
         public override int GetHashCode()
         {
-            return $"{EventType.ToString().ToUpper()}{AnimationKey.ToLower()}{FrameTick}{SurfaceFxTrigger.ToString().ToUpper()}{AttachmentBoneName}".GetHashCode();
+            return ToString().GetHashCode();
         }
 
         public override string ToAnimationSfxMapEntry()
         {
             return $"{EventType.ToString().ToUpper()}\t{AnimationKey.ToLower()}\t{FrameTick}\t{SurfaceFxTrigger.ToString().ToUpper()}\t{AttachmentBoneName}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            switch (obj)
+            {
+                case null:
+                    return false;
+                case SurfaceEvent evt:
+                    return Equals(evt);
+                default:
+                    return false;
+            }
+        }
+
+        private bool Equals(SurfaceEvent evt)
+        {
+            return GetHashCode().Equals(evt.GetHashCode());
+        }
+
+        public override string ToString()
+        {
+            return ToAnimationSfxMapEntry();
+        }
+
+        bool IEquatable<SurfaceEvent>.Equals(SurfaceEvent other)
+        {
+            return Equals(other);
         }
     }
 }
