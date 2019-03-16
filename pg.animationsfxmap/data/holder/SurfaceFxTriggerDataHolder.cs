@@ -12,7 +12,7 @@ namespace pg.animationsfxmap.data.holder
             List<SurfaceFxTrigger> triggers = SurfaceFxTriggerBuilder.BuildFromXml("");
             foreach (SurfaceFxTrigger surfaceFxTrigger in triggers)
             {
-                _DATA.TryAdd(surfaceFxTrigger.Name.ToLower(), surfaceFxTrigger);
+                _DATA.Add(surfaceFxTrigger.Name.ToLower(), surfaceFxTrigger);
             }
 
             IsInitialised = true;

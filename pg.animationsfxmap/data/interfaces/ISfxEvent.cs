@@ -1,6 +1,4 @@
-﻿using pg.animationsfxmap.enums;
-
-namespace pg.animationsfxmap.data.interfaces
+﻿namespace pg.animationsfxmap.data.interfaces
 {
     public interface ISfxEvent
     {
