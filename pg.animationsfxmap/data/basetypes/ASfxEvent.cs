@@ -9,14 +9,14 @@ namespace pg.animationsfxmap.data.basetypes
         private readonly Guid _GUID;
         private readonly SfxEventType _sfxEventType;
         private string _animationKey;
-        private uint _frameTick;
-  
+        private uint _animationTick;
+
         public string Uid => _GUID.ToString();
         public SfxEventType EventType { get => _sfxEventType; }
-        public uint FrameTick
+        public uint AnimationTick
         {
-            get => _frameTick;
-            set => _frameTick = value;
+            get => _animationTick;
+            set => _animationTick = value;
         }
         public string AnimationKey
         {

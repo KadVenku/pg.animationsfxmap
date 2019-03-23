@@ -21,10 +21,10 @@ namespace pg.animationsfxmap.data.impl
             set => _attachmentBoneName = value;
         }
 
-        public SurfaceEvent(string animationKey, uint frameTick, SurfaceFxTrigger surfaceFxTrigger, string attachmentBoneName) : base(SfxEventType.SURFACE)
+        public SurfaceEvent(string animationKey, uint animationTick, SurfaceFxTrigger surfaceFxTrigger, string attachmentBoneName) : base(SfxEventType.SURFACE)
         {
             AnimationKey = animationKey;
-            FrameTick = frameTick;
+            AnimationTick = animationTick;
             SurfaceFxTrigger = surfaceFxTrigger;
             AttachmentBoneName = attachmentBoneName;
         }
@@ -36,7 +36,7 @@ namespace pg.animationsfxmap.data.impl
 
         public override string ToAnimationSfxMapEntry()
         {
-            return $"{EventType.ToString().ToUpper()}\t{AnimationKey.ToLower()}\t{FrameTick}\t{SurfaceFxTrigger.ToString().ToUpper()}\t{AttachmentBoneName}";
+            return $"{EventType.ToString().ToUpper()}\t{AnimationKey.ToLower()}\t{AnimationTick}\t{SurfaceFxTrigger.ToString().ToUpper()}\t{AttachmentBoneName}";
         }
 
         public override bool Equals(object obj)

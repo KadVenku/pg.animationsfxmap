@@ -13,10 +13,10 @@ namespace pg.animationsfxmap.data.impl
             get => _soundEventKey;
             set => _soundEventKey = value;
         }
-        public SoundEvent(string animationKey, uint frameTick, string soundEventKey) : base(SfxEventType.SOUND)
+        public SoundEvent(string animationKey, uint animationTick, string soundEventKey) : base(SfxEventType.SOUND)
         {
             AnimationKey = animationKey;
-            FrameTick = frameTick;
+            AnimationTick = animationTick;
             SoundEventKey = soundEventKey;
         }
 
@@ -27,7 +27,7 @@ namespace pg.animationsfxmap.data.impl
 
         public override string ToAnimationSfxMapEntry()
         {
-            return $"{EventType.ToString().ToUpper()}\t{AnimationKey.ToLower()}\t{FrameTick}\t{SoundEventKey}";
+            return $"{EventType.ToString().ToUpper()}\t{AnimationKey.ToLower()}\t{AnimationTick}\t{SoundEventKey}";
         }
 
         public override bool Equals(object obj)
